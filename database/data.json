@@ -1,0 +1,32 @@
+{
+  "areas": [
+    {
+      "id": 1,
+      "name": "Finanzas",
+      "manager": "Jose Linaress",
+      "number_official": 4
+    },
+    {
+      "name": "Facultad de Odontologias",
+      "manager": "Sergio  Flores Gutierrez",
+      "number_official": "6",
+      "id": 2
+    },
+    {
+      "name": "Area2",
+      "manager": "Martha Paxi",
+      "number_official": "10",
+      "id": 3
+    }
+  ],
+  "actives": [
+    {
+      "id": 1,
+      "type_active": "computadora",
+      "mark": "HP",
+      "model": "Pavillon 360",
+      "state": "nuevo",
+      "id_area": 1
+    }
+  ]
+}

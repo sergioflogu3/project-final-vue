@@ -2,24 +2,36 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    {
+        path: '/',
+        name: 'home',
+        component: HomeView
+    },
+    {
+        path: '/about',
+        name: 'about',
+        component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    },
+    {
+        path: '/area',
+        name: 'Area',
+        component: () => import(/* webpackChunkName: "area" */ '../views/Area/AreaView.vue')
+    },
+    {
+        path: '/area/create',
+        name: 'CreateArea',
+        component: () => import(/* webpackChunkName: "create-area" */ '../views/Area/CreateView.vue')
+    },
+    {
+        path: '/area/:id',
+        name: 'EditArea',
+        component: () => import(/* webpackChunkName: "edit-area" */ '../views/Area/EditView.vue')
+    }
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes
+    history: createWebHashHistory(),
+    routes
 })
 
 export default router
