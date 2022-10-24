@@ -1,16 +1,9 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: HomeView
-    },
-    {
-        path: '/about',
-        name: 'about',
-        component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+        redirect: '/area'
     },
     {
         path: '/area',
@@ -26,7 +19,22 @@ const routes = [
         path: '/area/:id',
         name: 'EditArea',
         component: () => import(/* webpackChunkName: "edit-area" */ '../views/Area/EditView.vue')
-    }
+    },
+    {
+        path: '/active',
+        name: 'Active',
+        component: () => import(/* webpackChunkName: "active" */ '../views/Active/IndexView.vue')
+    },
+    {
+        path: '/active/create',
+        name: 'CreateActive',
+        component: () => import(/* webpackChunkName: "create-active" */ '../views/Active/CreateView.vue')
+    },
+    {
+        path: '/active/:id',
+        name: 'EditActive',
+        component: () => import(/* webpackChunkName: "edit-active" */ '../views/Active/EditVIew')
+    },
 ]
 
 const router = createRouter({

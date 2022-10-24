@@ -5,7 +5,9 @@
             Insertar Area
         </router-link>
     </div>
-    <hr>
+    <search-component
+        v-model:search="search"
+    />
     <div class="table-responsive">
         <table class="table table-bordered table-sm">
             <tr>
@@ -27,16 +29,25 @@
 
 <script>
 import AreaComponent from "@/components/Area/AreaComponent";
+import SearchComponent from "@/components/IU/SearchComponent";
 import useArea from "@/composables/area/useArea";
 
 export default {
     name: 'AreaView',
-    components: {AreaComponent},
+    components: {SearchComponent, AreaComponent},
     setup(){
-        const {areas, getAreas, deleteArea} = useArea();
+        const {areas, search, getAreas, deleteArea} = useArea();
         getAreas();
         return {
-            areas, deleteArea
+            areas, search,
+            deleteArea
+        }
+    },
+    computed: {
+        areas() {
+            return this.areas.filter(item => {
+                return item.name.toLowerCase().includes(this.search.toLowerCase())
+            });
         }
     }
 }

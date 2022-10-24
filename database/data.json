@@ -25,8 +25,24 @@
       "type_active": "computadora",
       "mark": "HP",
       "model": "Pavillon 360",
-      "state": "nuevo",
-      "id_area": 1
+      "state": "Nuevo",
+      "id_area": "1"
+    },
+    {
+      "type_active": "Compoutadora2",
+      "mark": "",
+      "model": "ideapad 330",
+      "state": "Usado",
+      "id_area": "3",
+      "id": 2
+    },
+    {
+      "type_active": "computadora 3",
+      "mark": "Dell",
+      "model": "PODDS324",
+      "state": "Nuevo",
+      "id_area": "2",
+      "id": 3
     }
   ]
 }

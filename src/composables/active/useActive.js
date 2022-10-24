@@ -4,18 +4,20 @@ import router from "@/router";
 
 export default function () {
     const state = reactive({
-        areas: [],
-        area: {
-            name: '',
-            manager: '',
-            number_official: 0
+        actives: [],
+        active: {
+            type_active: '',
+            mark: '',
+            model: '',
+            state: '',
+            id_area: 0
         },
-        search:''
+        search: ''
     });
 
-    const getAreas = async () => {
-        const request = await useAxios(
-            'areas',
+    const getActives = async () => {
+        const request = useAxios(
+            'actives',
             {
                 method: 'GET',
                 headers: {
@@ -24,31 +26,31 @@ export default function () {
             }
         )
         const response = await request.sendRequest();
-        state.areas = await response.data;
+        state.actives = await response.data;
     }
 
-    const createArea = async () => {
+    const createActive = async () => {
         const request = await useAxios(
-            'areas',
+            'actives',
             {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                data: state.area
+                data: state.active
             }
         );
         const response = await request.sendRequest();
         if (response){
             await router.push({
-                name: 'Area'
+                name: 'Active'
             });
         }
     }
 
-    const deleteArea = async (id) => {
+    const deleteActive = async (id) => {
         const request = await useAxios(
-            `areas/${id}`,
+            `actives/${id}`,
             {
                 method: 'DELETE',
                 headers: {
@@ -58,30 +60,13 @@ export default function () {
         );
         const response = await request.sendRequest();
         if (response){
-            await getAreas();
+            await getActives();
         }
     }
 
-    const updateArea = async (id) => {
+    const loadActive = async (id) => {
         const request = await useAxios(
-            `areas/${id}`,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: state.area
-            }
-        );
-        const response = await request.sendRequest();
-        if (response){
-            await router.push({name: 'Area'})
-        }
-    }
-
-    const loadArea = async (id) => {
-        const request = await useAxios(
-            `areas/${id}`,
+            `actives/${id}`,
             {
                 method: 'GET',
                 headers: {
@@ -91,12 +76,29 @@ export default function () {
         );
         const response = await request.sendRequest();
         if (response){
-            state.area = await response.data;
+            state.active = await response.data;
+        }
+    }
+
+    const updateActive = async (id) => {
+        const request = await useAxios(
+            `actives/${id}`,
+            {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: state.active
+            }
+        );
+        const response = await request.sendRequest();
+        if (response){
+            await router.push({name: 'Active'})
         }
     }
 
     return {
-        ...toRefs(state),
-        getAreas, createArea, deleteArea, updateArea, loadArea
+        ... toRefs(state),
+        getActives, createActive, deleteActive, loadActive, updateActive
     }
 }
